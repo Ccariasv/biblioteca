@@ -22,3 +22,8 @@ public class Autor {
     private String apellidos;
 
 }
+/*
+biblioteca/api/swagger-ui/index.html#/
+
+http://localhost:8080/biblioteca/api/swagger-ui/index.html
+ */
