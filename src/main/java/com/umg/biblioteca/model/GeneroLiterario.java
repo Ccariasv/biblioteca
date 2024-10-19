@@ -1,5 +1,6 @@
 package com.umg.biblioteca.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Setter
 @Entity
 @Table(name = "genero_literario")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class GeneroLiterario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
