@@ -39,7 +39,6 @@ public class MunicipioController {
         return ResponseEntity.ok(municipio);
     }
 
-
     @PutMapping("/edit/{id}")
     public ResponseEntity<Municipio> editarMunicipio(@PathVariable long id, @RequestBody Municipio municipioRequest){
 
@@ -62,5 +61,10 @@ public class MunicipioController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
 
+    }
+
+    @GetMapping("/departamento/{departamentoId}")
+    public List<Municipio> obtenerMunicipiosPorDepartamento(@PathVariable Long departamentoId) {
+        return municipioRepository.findByDepartamentoId(departamentoId);
     }
 }
