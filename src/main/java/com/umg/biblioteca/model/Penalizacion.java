@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -27,10 +29,9 @@ public class Penalizacion {
     @JoinColumn(name = "prestamos_id", nullable = false)
     private Prestamo prestamos;
 
-    @Column(name = "tiempo_penalizacion", nullable = false, precision = 8, scale = 2)
-    private BigDecimal tiempoPenalizacion;
+    @Column(name = "tiempo_penalizacion", nullable = false)
+    private LocalDate tiempoPenalizacion;
 
     @Column(name = "fecha_penalizacion", nullable = false)
-    private Long fechaPenalizacion;
-
+    private LocalDate fechaPenalizacion;
 }

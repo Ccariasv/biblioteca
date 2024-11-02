@@ -26,7 +26,7 @@ public class DepartamentoController {
     }
 
     @PostMapping("/save")
-    public Departamento guardarDepartamento(Departamento departamento){
+    public Departamento guardarDepartamento(@RequestBody Departamento departamento){
         return departamentoRepository.save(departamento);
     }
 

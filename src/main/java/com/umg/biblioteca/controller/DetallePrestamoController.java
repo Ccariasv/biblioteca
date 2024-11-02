@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -18,12 +19,11 @@ public class DetallePrestamoController {
     @Autowired
     private DetallePrestamoRepository detallePrestamoRepository;
 
-    /*
     @GetMapping("/all")
     private List<DetallePrestamo> ListarDetalles(){
         return detallePrestamoRepository.findAll();
     }
-    */
+
 
     @PostMapping("/save")
     public DetallePrestamo guardarDetallePrestamo(DetallePrestamo detallePrestamo){

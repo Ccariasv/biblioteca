@@ -39,18 +39,34 @@ public class PrestamoController {
 
 
     @PutMapping("/edit/{id}")
-    public ResponseEntity<Prestamo> EditarPrestamo(@PathVariable long id, @RequestBody Prestamo prestamoRequest){
+    public ResponseEntity<Prestamo> EditarPrestamo(@PathVariable long id, @RequestBody Prestamo prestamoRequest) {
         Prestamo prestamo = prestamoRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Prestamo no encontrado ."+ id));
-        prestamo.setLibro(prestamoRequest.getLibro());
-        prestamo.setCliente(prestamoRequest.getCliente());
-        prestamo.setFechaPrestamo(prestamoRequest.getFechaPrestamo());
-        prestamo.setFechaLimiteDevolucion(prestamoRequest.getFechaLimiteDevolucion());
-        prestamo.setFechaDevolucion(prestamoRequest.getFechaDevolucion());
-        prestamo.setObservaciones(prestamoRequest.getObservaciones());
-        Prestamo PrestamoGuardado = prestamoRepository.save(prestamo);
-        return ResponseEntity.ok(PrestamoGuardado);
+                .orElseThrow(() -> new ResourceNotFoundException("Prestamo no encontrado: " + id));
+
+        // Solo actualiza los campos que están presentes en la solicitud
+        if (prestamoRequest.getLibro() != null) {
+            prestamo.setLibro(prestamoRequest.getLibro());
+        }
+        if (prestamoRequest.getCliente() != null) {
+            prestamo.setCliente(prestamoRequest.getCliente());
+        }
+        if (prestamoRequest.getFechaPrestamo() != null) {
+            prestamo.setFechaPrestamo(prestamoRequest.getFechaPrestamo());
+        }
+        if (prestamoRequest.getFechaLimiteDevolucion() != null) {
+            prestamo.setFechaLimiteDevolucion(prestamoRequest.getFechaLimiteDevolucion());
+        }
+        if (prestamoRequest.getFechaDevolucion() != null) {
+            prestamo.setFechaDevolucion(prestamoRequest.getFechaDevolucion());
+        }
+        if (prestamoRequest.getObservaciones() != null) {
+            prestamo.setObservaciones(prestamoRequest.getObservaciones());
+        }
+
+        Prestamo prestamoGuardado = prestamoRepository.save(prestamo);
+        return ResponseEntity.ok(prestamoGuardado);
     }
+
 
 
 

@@ -30,8 +30,8 @@ public class LibroController {
         return libroRepository.save(libro);
     }
 
-    @GetMapping({"id"})
-    public ResponseEntity<Libro> getLibroById(@RequestParam long id) {
+    @GetMapping({"{id}"})
+    public ResponseEntity<Libro> getLibroById(@PathVariable long id) {
         Libro libro = libroRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("libro no encontrado : " + id));
         return ResponseEntity.ok(libro);
